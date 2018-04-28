@@ -30,6 +30,6 @@
 
 cmake_minimum_required(VERSION 3.10 FATAL_ERROR)
 
-project(TheArtOfUnitTesting-NovaProva VERSION 0.1.0 LANGUAGES C)
+project(LogAn.UnitTests.NovaProva VERSION 0.1.0 LANGUAGES C)
 
 add_executable(test_logan_via_nova_prova main.c)

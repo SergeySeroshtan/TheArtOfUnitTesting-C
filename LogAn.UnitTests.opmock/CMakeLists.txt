@@ -30,6 +30,6 @@
 
 cmake_minimum_required(VERSION 3.10 FATAL_ERROR)
 
-project(TheArtOfUnitTesting-opmock VERSION 0.1.0 LANGUAGES C)
+project(LogAn.UnitTests.opmock VERSION 0.1.0 LANGUAGES C)
 
 add_executable(test_logan_via_opmock main.c)
