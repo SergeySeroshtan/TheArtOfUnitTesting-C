@@ -30,14 +30,32 @@
 
 cmake_minimum_required(VERSION 3.10 FATAL_ERROR)
 
-project(TheArtOfUnitTesting VERSION 0.1.0 LANGUAGES C)
+# ---------------------------------------------------------------------------
+#   Unity
+# ---------------------------------------------------------------------------
+add_library(unity "")
+target_sources(unity
+        PUBLIC
+        "${CMAKE_CURRENT_LIST_DIR}/Unity/src/unity.h"
+        "${CMAKE_CURRENT_LIST_DIR}/Unity/src/unity_internals.h"
+        "${CMAKE_CURRENT_LIST_DIR}/Unity/src/unity.c")
 
-add_subdirectory(libext)
+target_include_directories(unity
+        PUBLIC
+        $<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/Unity/src>)
 
-add_subdirectory(LogAn)
+# ---------------------------------------------------------------------------
+#   CMock
+# ---------------------------------------------------------------------------
+add_library(cmock "")
+target_sources(cmock
+        PUBLIC
+        "${CMAKE_CURRENT_LIST_DIR}/CMock/src/cmock.h"
+        "${CMAKE_CURRENT_LIST_DIR}/CMock/src/cmock_internals.h"
+        "${CMAKE_CURRENT_LIST_DIR}/CMock/src/cmock.c")
 
-add_subdirectory(LogAn.UnitTests.CMock) # https://github.com/ThrowTheSwitch/CMock
-add_subdirectory(LogAn.UnitTests.CMocka) # https://cmocka.org
-add_subdirectory(LogAn.UnitTests.opmock) # https://sourceforge.net/p/opmock/wiki/Home/
-add_subdirectory(LogAn.UnitTests.fff) # https://github.com/meekrosoft/fff
-add_subdirectory(LogAn.UnitTests.NovaProva) # https://novaprova.org
+target_include_directories(cmock
+        PUBLIC
+        $<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/CMock/src>
+        PRIVATE
+        $<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/Unity/src>)

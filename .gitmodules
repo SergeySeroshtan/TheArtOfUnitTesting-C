@@ -1,0 +1,6 @@
+[submodule "libext/CMock"]
+	path = libext/CMock
+	url = https://github.com/ThrowTheSwitch/CMock.git
+[submodule "libext/Unity"]
+	path = libext/Unity
+	url = https://github.com/ThrowTheSwitch/Unity.git
