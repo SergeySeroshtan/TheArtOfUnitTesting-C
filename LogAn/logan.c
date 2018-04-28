@@ -29,3 +29,28 @@
  *   OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
  *   OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
+
+#include "logan.h"
+
+#include <string.h>
+#include <assert.h>
+#include <stdbool.h>
+#include <stddef.h>
+
+bool log_analyzer_is_valid_log_file_name (log_analyzer_t* analyzer, const char *file_name) {
+    assert(analyzer);
+    assert(file_name);
+
+    const size_t ext_len_with_dot = 4;
+    const size_t one_symbol_and_ext_len = 1 + ext_len_with_dot;
+
+    if (strlen (file_name) < one_symbol_and_ext_len) {
+        return false;
+    }
+
+    if (strncmp (file_name + strlen(file_name) - ext_len_with_dot, ".SLF", ext_len_with_dot) == 0) {
+        return true;
+    }
+
+    return false;
+}

@@ -32,4 +32,7 @@ cmake_minimum_required(VERSION 3.10 FATAL_ERROR)
 
 project(LogAn VERSION 0.1.0 LANGUAGES C)
 
-add_library(logan logan.c)
+set(CMAKE_C_STANDARD 99)
+set(CMAKE_C_STANDARD_REQUIRED YES)
+
+add_library(logan logan.h logan.c)
